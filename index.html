@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>吴思颖  个人资料</title>
+  <style>
+    body {
+      font-family: "微软雅黑", sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #e6f0ff, #f9fcff);
+      animation: fadeInBody 1s ease-in;
+    }
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding: 30px 40px;
+      animation: slideUp 0.8s ease-out;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 64, 128, 0.2);
+      margin-bottom: 15px;
+      animation: popIn 0.6s ease;
+    }
+    header h1 {
+      margin: 0;
+      color: #003366;
+    }
+    header p {
+      color: #666;
+      font-size: 1.1em;
+    }
+    nav {
+      text-align: center;
+      margin: 20px 0 30px;
+    }
+    nav button {
+      background: none;
+      border: 2px solid #004080;
+      color: #004080;
+      padding: 10px 16px;
+      margin: 0 5px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    nav button.active, nav button:hover {
+      background: #004080;
+      color: white;
+    }
+    section {
+      display: none;
+      animation: fadeInSection 0.6s ease forwards;
+    }
+    section.active {
+      display: block;
+    }
+    h3 {
+      color: #004080;
+    }
+    ul {
+      padding-left: 20px;
+      line-height: 1.7;
+      color: #333;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #888;
+      font-size: 0.9em;
+    }
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeInSection {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="avatar.jpg" alt="头像" />
+      <h1>吴思颖（Cindy）</h1>
+      <p>信息技术与网络安全专家</p>
+    </header>
+
+    <nav>
+      <button class="tab active" data-target="about">简介</button>
+      <button class="tab" data-target="education">教育</button>
+      <button class="tab" data-target="experience">工作</button>
+      <button class="tab" data-target="skills">技能</button>
+      <button class="tab" data-target="hobbies">兴趣</button>
+      <button class="tab" data-target="certifications">证书</button>
+      <button class="tab" data-target="projects">项目</button>
+      <button class="tab" data-target="contact">联系</button>
+    </nav>
+
+    <section id="about" class="active">
+      <p>现居旧金山，1988年出生。南京理工大学计算机工程学士，后赴 Merrimack College 进修工商管理。自2018年起在 Fortinet 担任网络安全工程师，主导多个企业级项目，擅长应对复杂技术挑战，致力于网络安全架构优化与数字基础设施保护。熟练使用Python、Bash脚本进行网络自动化，具备优秀的跨部门沟通和项目协调能力。</p>
+    </section>
+
+    <section id="education">
+      <ul>
+        <li><strong>南京理工大学（2007-2011）</strong> - 信息技术与计算机工程<br/>主修课程包括操作系统、计算机网络、软件工程、数据库原理、数据结构与算法、人工智能等，掌握了从底层硬件到高级编程的系统知识。积极参与科研项目和校级网络竞赛，获得“优秀毕业设计”奖。完成的毕业课题为“基于Python的入侵检测系统设计与实现”。</li>
+        <li><strong>Merrimack College（2016-2017）</strong> - 工商管理进修<br/>修读商业战略、市场营销、企业信息系统、组织行为学等课程，系统了解美式企业管理模式，期间参与本地初创企业咨询项目，提升了实际商业策划与分析能力。在跨文化团队中合作，增强了项目沟通和国际视野。</li>
+        <li><strong>南京外国语学校（2004-2007）</strong><br/>课程兼顾中英文，强化语言表达与批判性思维训练，积极参与模拟联合国、演讲辩论与外事接待活动，为今后涉外项目沟通与留学打下坚实基础。</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h3>Fortinet, Inc.（2018-至今）</h3>
+      <ul>
+        <li>任职于网络安全部门，负责企业级网络架构评估与安全策略设计，包括下一代防火墙、VPN、IPS/IDS 配置与性能优化。</li>
+        <li>参与多个跨国项目，例如与欧洲金融机构合作部署FortiGate集群系统，实现99.99% SLA保障。</li>
+        <li>主导开发自动化日志分析平台，使用ELK堆栈与Python脚本实现智能告警系统。</li>
+        <li>组织多次技术讲座，培训新员工与合作伙伴，推动知识共享文化。</li>
+        <li>参与FortiAnalyzer与FortiManager的部署与定制化开发，提升集中管理效率。</li>
+        <li>出席 RSA Conference、Black Hat 等行业盛会并代表公司发言。</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <ul>
+        <li>网络安全 / 渗透测试 / 威胁分析 / 风险管理</li>
+        <li>编程语言：Python, Bash, Java, C++</li>
+        <li>平台：Linux, Windows Server, FortiOS, VMware ESXi</li>
+        <li>工具与系统：ELK, Wireshark, Metasploit, Nessus, Ansible</li>
+        <li>云服务：AWS, Azure, FortiCloud</li>
+      </ul>
+    </section>
+
+    <section id="hobbies">
+      <ul>
+        <li>运动：瑜伽、高尔夫、跳伞</li>
+        <li>美食旅行：探索全球各地美食文化</li>
+        <li>阅读：心理学、经济、经典文学</li>
+        <li>收藏：香水、奢侈品牌手袋、限量口红</li>
+      </ul>
+    </section>
+
+    <section id="certifications">
+      <ul>
+        <li>Fortinet NSE 7 Network Security Architect</li>
+        <li>Certified Information Systems Security Professional (CISSP)</li>
+        <li>Certified Ethical Hacker (CEH)</li>
+        <li>AWS Certified Solutions Architect – Associate</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <ul>
+        <li><strong>全球金融客户FortiGate HA集群部署</strong>：负责从需求分析到最终部署，完成五节点高可用防火墙配置，实现故障切换时间小于3秒。</li>
+        <li><strong>自动化威胁响应平台开发</strong>：整合ELK、FortiAnalyzer与自研Python脚本，实现日志关联分析与智能告警推送。</li>
+        <li><strong>Fortinet产品国际化文档编写项目</strong>：主笔中文用户手册和API指南，提升产品在华可用性。</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <p>📧 Email: wusiying999@gmail.com</p>
+    </section>
+
+    <footer>
+      &copy; 2025 吴思颖. 版权所有。
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
