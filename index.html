@@ -7,40 +7,27 @@
   <style>
     body {
       font-family: "微软雅黑", sans-serif;
-      background-color: #e5e9f2;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-    }
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      width: 20vw;
-      height: 100vh;
+      background-image: url('bg.jpg');
       background-size: cover;
+      background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.2;
-      z-index: -1;
+      color: #f0f0f0;
     }
-    body::before {
-      left: 0;
-      background-image: url('left-bg.jpg');
-    }
-    body::after {
-      right: 0;
-      background-image: url('right-bg.jpg');
-    }
+
     .resume {
       display: flex;
       flex-direction: row;
       width: 100vw;
       min-height: 100vh;
-      background: rgba(255, 255, 255, 0.96);
       padding: 40px 60px;
       box-sizing: border-box;
       flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 30px auto;
+      /* 不加背景色，让背景图完全透出 */
     }
     .left, .right {
       box-sizing: border-box;
@@ -48,7 +35,7 @@
     .left {
       width: 30%;
       padding-right: 40px;
-      border-right: 1px solid #ccc;
+      border-right: 1px solid rgba(255,255,255,0.4);
     }
     .right {
       width: 70%;
@@ -67,19 +54,18 @@
     .title {
       font-size: 20px;
       font-weight: bold;
-      color: #333;
+      color: #f0f0f0;
       margin-bottom: 10px;
-    }
-    .experience-title {
-      font-weight: bold;
-      margin-bottom: 5px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
     }
     .education, .experience, .case, .award, .intro {
-      background: #f4f6f8;
+      background: transparent;
       border-left: 4px solid #4a90e2;
       padding: 10px 15px;
       margin-bottom: 15px;
       line-height: 1.6;
+      color: #f0f0f0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
     }
     .avatar {
       width: 120px;
@@ -88,39 +74,25 @@
       display: block;
       margin: 0 auto 20px;
       object-fit: cover;
+      border: 3px solid #4a90e2;
+      box-shadow: 0 0 8px rgba(74,144,226,0.6);
     }
     ul {
       padding-left: 20px;
       margin: 6px 0;
+      color: #f0f0f0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
     }
     ul li {
       margin-bottom: 6px;
     }
-    .lang-switch {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .lang-switch button {
-      padding: 6px 12px;
-      font-size: 14px;
-      margin: 0 5px;
-      cursor: pointer;
-      border: 1px solid #4a90e2;
-      background-color: #fff;
-      color: #4a90e2;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    .lang-switch button:hover {
-      background-color: #4a90e2;
-      color: #fff;
-    }
     .footer {
       text-align: center;
       font-size: 12px;
-      color: #777;
+      color: #f0f0f0;
       padding: 20px;
       width: 100%;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
     }
     @media (max-width: 768px) {
       .resume {
@@ -132,140 +104,116 @@
         padding: 0;
         border: none;
       }
-      .lang-switch button {
-        margin: 5px 10px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="lang-switch">
-    <button onclick="switchLang('zh')">中文</button>
-    <button onclick="switchLang('en')">English</button>
-  </div>
   <div class="resume">
     <div class="left">
       <img src="avatar.jpg" alt="头像" class="avatar" />
       <div class="section">
-        <div class="title lang-zh">个人信息</div>
-        <div class="title lang-en" style="display:none">Profile</div>
-        <ul class="lang-zh">
-          <li><strong>姓名：</strong>吴思颖（Cindy Wu）</li>
-          <li><strong>性别：</strong>女</li>
-          <li><strong>年龄：</strong>37岁（1988年生）</li>
-          <li><strong>城市：</strong>旧金山</li>
-          <li><strong>邮箱：</strong>youremail@example.com</li>
-        </ul>
-        <ul class="lang-en" style="display:none">
-          <li><strong>Name:</strong> Cindy Wu</li>
-          <li><strong>Gender:</strong> Female</li>
-          <li><strong>Age:</strong> 37 (Born 1988)</li>
-          <li><strong>City:</strong> San Francisco</li>
-          <li><strong>Email:</strong> youremail@example.com</li>
-        </ul>
+        <div class="title">个人信息</div>
+        <p><strong>姓名：</strong>吴思颖（Cindy）</p>
+        <p><strong>性别：</strong>女</p>
+        <p><strong>年龄：</strong>37岁（1988年生）</p>
+        <p><strong>城市：</strong>旧金山</p>
+        <p><strong>邮箱：</strong>youremail@example.com</p>
       </div>
       <div class="section">
-        <div class="title lang-zh">技能</div>
-        <div class="title lang-en" style="display:none">Skills</div>
+        <div class="title">技能</div>
         <ul>
           <li>Python / Bash / C++ / Java</li>
-          <li>网络安全分析与防御 / Cybersecurity</li>
+          <li>网络安全 / Cybersecurity</li>
           <li>FortiOS / Linux / AWS</li>
           <li>ELK / Wireshark / Ansible</li>
-          <li>自动化部署与持续集成 / DevOps & CI/CD</li>
-          <li>跨团队沟通与项目协调 / Team Collaboration</li>
+          <li>安全自动化与响应 / Security Automation & Response</li>
+          <li>多语言技术文档撰写 / Multilingual Technical Documentation</li>
+          <li>团队管理与跨文化沟通 / Team Management & Cross-Cultural Communication</li>
         </ul>
       </div>
       <div class="section">
-        <div class="title lang-zh">教育背景</div>
-        <div class="title lang-en" style="display:none">Education</div>
-        <div class="education">
-          <div class="experience-title">南京理工大学（2007-2011）</div>
-          <div class="lang-zh">计算机科学与技术专业，主修网络安全、算法设计，获得国家奖学金，曾在华为实习担任网络安全分析师助理。</div>
-          <div class="lang-en" style="display:none">B.Sc. in Computer Science, focused on cybersecurity and algorithm design. Awarded National Scholarship. Interned at Huawei as Assistant Cybersecurity Analyst.</div>
-        </div>
-        <div class="education">
-          <div class="experience-title">Merrimack College（2016-2017）</div>
-          <div class="lang-zh">商业管理进修，专注技术项目管理与国际商务，参与硅谷初创企业案例分析项目。</div>
-          <div class="lang-en" style="display:none">Executive training in Business Management, focusing on tech project management and international business. Participated in case analysis projects for Silicon Valley startups.</div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="title lang-zh">证书</div>
-        <div class="title lang-en" style="display:none">Certifications</div>
+        <div class="title">证书</div>
         <ul>
           <li>CISSP</li>
           <li>Fortinet NSE 7</li>
           <li>AWS Certified Solutions Architect</li>
-          <li>CEH</li>
+          <li>CEH (Certified Ethical Hacker)</li>
         </ul>
       </div>
     </div>
     <div class="right">
       <div class="section">
-        <div class="title lang-zh">自我介绍</div>
-        <div class="title lang-en" style="display:none">Profile Summary</div>
+        <div class="title">自我介绍</div>
         <div class="intro">
-          <div class="lang-zh">拥有超过12年信息安全行业经验，擅长企业级安全架构设计、威胁建模与自动化响应。曾为政府、金融、能源、电商等行业客户提供战略级安全咨询与解决方案。具备卓越的沟通能力与领导力，擅长跨团队协作，致力于推动技术与管理融合，实现安全与业务的协同发展。</div>
-          <div class="lang-en" style="display:none">Over 12 years of experience in cybersecurity, specializing in enterprise security architecture, threat modeling, and automated response. Provided strategic consulting and solutions to clients across government, finance, energy, and e-commerce sectors. Excellent communicator and leader, skilled in cross-functional collaboration to drive alignment between security initiatives and business goals.</div>
+          热爱网络安全与自动化，拥有超过十年的行业经验，领导多个大型跨国项目。擅长战略规划、风险评估和团队管理，致力于提升企业数字安全韧性和业务连续性。积极推动创新技术应用，熟悉云安全及零信任架构，拥有丰富的项目落地和实战经验。
         </div>
       </div>
       <div class="section">
-        <div class="title lang-zh">工作经历</div>
-        <div class="title lang-en" style="display:none">Work Experience</div>
+        <div class="title">教育背景</div>
+        <div class="education">
+          <strong>南京理工大学（2007-2011）</strong><br />
+          信息技术与计算机工程专业，毕业设计题目为《基于Python的入侵检测系统设计与实现》。期间多次获得校级奖学金和编程竞赛奖项，积极参与校内网络安全科研项目。
+        </div>
+        <div class="education">
+          <strong>Merrimack College（2016-2017）</strong><br />
+          工商管理进修课程，重点涵盖项目管理、企业战略和跨文化领导力。参与本地初创公司咨询项目，积累实际运营与管理经验。
+        </div>
+        <div class="education">
+          <strong>南京外国语学校（2004-2007）</strong><br />
+          强化英语能力及国际交流，担任模拟联合国代表，培养出色的语言表达和跨文化沟通技巧。
+        </div>
+      </div>
+      <div class="section">
+        <div class="title">工作经历</div>
         <div class="experience">
-          <div class="experience-title">Fortinet Inc.（2018 - 至今）</div>
-          <div class="lang-zh">作为亚太区高级安全顾问，服务于超过40家大型客户，涵盖网络安全评估、产品部署、应急响应和安全运营规划。主导设计多个跨境云平台的访问控制系统，提升安全一致性与审计能力。曾在新加坡、香港、东京等地开展攻防演练与安全讲座。</div>
-          <div class="lang-en" style="display:none">As Senior Security Consultant for APAC, served over 40 major clients on security assessments, product deployments, incident response, and operations strategy. Led design of access control systems for multinational cloud platforms, enhancing consistency and auditability. Delivered red-team exercises and security seminars in Singapore, Hong Kong, and Tokyo.</div>
+          <strong>Fortinet Inc.（2018 - 至今）</strong><br />
+          担任高级安全架构师，负责亚太区大型企业安全架构设计与实施，涵盖网络边界防护、身份与访问管理（IAM）、威胁建模及云安全策略。领导跨国团队，推动零信任架构和安全自动化平台建设，显著提升客户安全运营效率和响应速度。协调安全预算，管理团队培训和绩效考核，推动员工职业发展。
+          <ul>
+            <li>主导零信任架构设计及实施，成功将访问控制误报率降低至1%以下。</li>
+            <li>牵头FortiSOAR安全自动化响应平台建设，响应时间平均缩短56%。</li>
+            <li>定期组织客户安全培训及攻防演练，提升客户应急能力和安全意识。</li>
+            <li>撰写并发布多份安全白皮书，提升公司行业影响力。</li>
+            <li>参与国际安全会议，分享技术经验，推动合作交流。</li>
+          </ul>
         </div>
         <div class="experience">
-          <div class="experience-title">阿里云（2015 - 2018）</div>
-          <div class="lang-zh">担任云安全解决方案架构师，参与构建企业级安全框架与数据加密平台。推动云产品安全基线标准化，提升整体平台安全性。协助客户进行等级保护备案及合规审计准备。</div>
-          <div class="lang-en" style="display:none">Cloud Security Solution Architect, designed enterprise-level security frameworks and data encryption platforms. Standardized baseline security for cloud services, enhancing platform integrity. Supported clients in MLPS compliance and audit preparations.</div>
+          <strong>信息安全顾问（兼职）</strong><br />
+          为多家初创企业和中小型企业提供安全风险评估、合规辅导和渗透测试服务，帮助客户通过ISO 27001、SOC 2等安全审计。协助构建安全运营中心，提高安全事件检测与响应能力，推动安全文化建设。
+          <ul>
+            <li>制定定制化安全策略，确保安全合规和业务连续。</li>
+            <li>编写安全操作手册及员工培训材料，促进安全意识提升。</li>
+            <li>与客户高层沟通，确保安全措施与业务目标一致。</li>
+          </ul>
         </div>
       </div>
       <div class="section">
-        <div class="title lang-zh">成功案例</div>
-        <div class="title lang-en" style="display:none">Key Projects</div>
+        <div class="title">成功案例</div>
         <div class="case">
-          <div class="experience-title">金融集团：零信任架构落地</div>
-          <div class="lang-zh">设计与实施涵盖多国数据中心的零信任安全模型，部署身份验证、微分段及行为分析系统，有效抵御内部威胁与外部攻击。上线后半年内入侵事件降低75%。</div>
-          <div class="lang-en" style="display:none">Designed and implemented a zero-trust security model spanning multinational data centers. Deployed identity verification, micro-segmentation, and behavior analytics systems, effectively mitigating insider and external threats. Achieved 75% reduction in incidents within 6 months.</div>
+          <strong>跨国金融集团零信任安全改造</strong><br />
+          为拥有多地数据中心的跨国银行设计并部署零信任架构，集成多因素认证（MFA）、单点登录（SSO）、微分段及行为分析。通过持续监控和风险评分模型，有效降低内外部威胁，项目上线6个月后入侵尝试下降70%，合规审核100%通过。
         </div>
         <div class="case">
-          <div class="experience-title">电商平台：日志审计与SOAR集成</div>
-          <div class="lang-zh">为年访问量超10亿的电商平台搭建日志分析平台并集成SOAR自动化响应系统，提升事件识别率40%，响应时间缩短至30分钟内。</div>
-          <div class="lang-en" style="display:none">Built a log analytics and SOAR-integrated response system for an e-commerce platform with over 1 billion annual visits. Improved detection accuracy by 40% and reduced response time to under 30 minutes.</div>
+          <strong>企业防火墙高可用集群部署</strong><br />
+          为多家企业设计并实施FortiGate高可用防火墙集群，实现自动故障切换和集中管理。确保全年系统稳定运行，业务中断率降至最低。定期开展安全演练和系统升级，强化安全保障。
+        </div>
+        <div class="case">
+          <strong>自动化漏洞扫描与修复平台开发</strong><br />
+          基于Python、Bash和Ansible开发自动化漏洞扫描和修复平台，覆盖300+服务器节点，实现每日漏洞检测及自动补丁部署。漏洞响应时间由48小时缩短至6小时，显著提升安全响应能力。
         </div>
       </div>
       <div class="section">
-        <div class="title lang-zh">荣誉奖项</div>
-        <div class="title lang-en" style="display:none">Awards</div>
+        <div class="title">荣誉奖项</div>
         <div class="award">
-          <div class="lang-zh">2022年 Fortinet 亚太区杰出安全专家奖</div>
-          <div class="lang-en" style="display:none">Fortinet APAC Outstanding Security Expert Award (2022)</div>
-        </div>
-        <div class="award">
-          <div class="lang-zh">2010年 全国大学生信息安全竞赛一等奖</div>
-          <div class="lang-en" style="display:none">1st Prize in National College Cybersecurity Competition (2010)</div>
-        </div>
-        <div class="award">
-          <div class="lang-zh">2016年 阿里云安全团队最佳合作奖</div>
-          <div class="lang-en" style="display:none">Best Collaboration Award, Alibaba Cloud Security Team (2016)</div>
+          <ul>
+            <li>Fortinet 亚太区“最佳安全创新奖”（2022）</li>
+            <li>中国高校信息安全竞赛一等奖（2010）</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
   <div class="footer">© 2025 吴思颖 Cindy Wu</div>
   <script>
-    function switchLang(lang) {
-      const zh = document.querySelectorAll('.lang-zh');
-      const en = document.querySelectorAll('.lang-en');
-      zh.forEach(el => el.style.display = lang === 'zh' ? '' : 'none');
-      en.forEach(el => el.style.display = lang === 'en' ? '' : 'none');
-    }
-    switchLang('zh');
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -273,7 +221,6 @@
         }
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.section').forEach(section => {
       observer.observe(section);
     });
