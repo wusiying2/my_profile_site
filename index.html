@@ -9,7 +9,7 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      overflow: hidden; /* 禁止浏览器滚动条 */
     }
 
     body {
@@ -24,26 +24,27 @@
     /* 页面背景：左右背景图片和中间背景色 */
     .resume-container {
       display: flex;
-      height: 100vh;
+      height: 100vh; /* 视口高度，确保不超出 */
       background-image: url('left-bg.jpg'), url('right-bg.jpg');
       background-position: left center, right center;
       background-size: 30% 100%, 30% 100%; /* 左右背景占30% */
       background-repeat: no-repeat;
       justify-content: center;
+      overflow: auto; /* 允许滚动 */
     }
 
     .resume {
       display: flex;
       flex-direction: column;
-      width: 45%; /* 中间简历部分占45%的宽度 */
+      width: 40%; /* 中间部分的宽度为40% */
       min-height: 100vh;
       padding: 40px 60px;
       box-sizing: border-box;
       margin: 0 auto;
-      background-color: #e3f2fd; /* 中间部分背景为淡蓝色 */
+      background-color: #87CEEB; /* 天蓝色背景 */
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
-      overflow-y: auto; /* 使内容可以滚动，避免被截断 */
+      overflow-y: auto; /* 允许滚动 */
     }
 
     /* 头像样式 */
@@ -62,17 +63,21 @@
       box-shadow: 0 0 8px rgba(74,144,226,0.6);
     }
 
-    /* 部分内容样式 */
-    .section {
-      margin-bottom: 25px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease-out;
+    /* 自我介绍部分的背景图片 */
+    .intro {
+      background-size: cover; /* 背景图片覆盖整个区域 */
+      background-position: center; /* 背景居中 */
+      background-attachment: fixed; /* 背景固定 */
+      color: white; /* 文字颜色为白色 */
+      padding: 20px; /* 内边距 */
+      border-radius: 8px; /* 边框圆角 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+      margin-bottom: 20px; /* 底部间距 */
     }
 
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* 其他样式 */
+    .section {
+      margin-bottom: 25px;
     }
 
     .title {
@@ -140,6 +145,16 @@
         padding: 20px;
       }
     }
+
+    /* 自定义滚动条：隐藏滚动条 */
+    .resume-container::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    .resume::-webkit-scrollbar {
+      width: 0px;
+    }
+
   </style>
 </head>
 <body>
@@ -188,36 +203,55 @@
       <div class="section">
         <div class="title">自我介绍</div>
         <div class="intro">
-          热爱网络安全与自动化，拥有超过十年的行业经验，领导多个大型跨国项目。擅长战略规划、风险评估和团队管理，致力于提升企业数字安全韧性和业务连续性。积极推动创新技术应用，熟悉云安全及零信任架构，拥有丰富的项目落地和实战经验。
+          我是一名热爱网络安全与自动化的专业人士，拥有超过十年的信息安全行业经验。在过去的职业生涯中，我领导并参与了多个跨国公司和大型企业的安全项目，帮助它们构建强大的数字安全防线。我熟悉多种安全技术和工具，包括网络安全防护、漏洞管理、威胁建模、零信任架构等，擅长将这些技术应用于实际项目中，提升企业的安全韧性与业务连续性。
+
+          我对安全自动化与响应有深厚的兴趣，致力于推动安全防护的智能化和自动化。通过构建自动化平台和安全响应机制，我帮助企业显著提高了安全事件的响应速度和处理效率。我不仅注重技术的实施，还非常重视团队的建设和跨文化沟通，曾多次带领跨国团队高效协作，解决了多起复杂的安全挑战。
+
+          作为一个持续学习的技术人员，我时刻关注信息安全领域的最新发展趋势，并积极推动创新技术的应用。我的目标是通过技术提升企业安全防护的能力，确保业务能够在安全的环境中稳定运行。未来，我希望能在更大范围内应用我在网络安全领域的知识与经验，为全球企业的数字安全保驾护航。
         </div>
       </div>
       <div class="section">
         <div class="title">教育背景</div>
         <div class="education">
           <strong>南京理工大学（2007-2011）</strong><br />
-          信息技术与计算机工程专业，毕业设计题目为《基于Python的入侵检测系统设计与实现》。期间多次获得校级奖学金和编程竞赛奖项，积极参与校内网络安全科研项目。
-        </div>
-        <div class="education">
+          我在南京理工大学攻读信息技术与计算机工程专业，在四年的大学生涯中，系统地学习了计算机科学的各个领域，并深入掌握了编程语言、数据结构、操作系统等核心知识。我的毕业设计题目是《基于Python的入侵检测系统设计与实现》，该项目让我深入了解了网络安全的基本原理以及如何使用Python进行实际的安全开发。除此之外，我还参加了多项编程比赛，并多次获得校级奖学金。
+
+          在大学期间，我不仅重视理论学习，还积极参与各种课外活动。通过参与网络安全领域的科研项目，我获得了宝贵的实战经验。这些经历不仅培养了我的技术能力，还让我对信息安全行业有了更深刻的理解，并为我的职业生涯奠定了坚实的基础。
+
           <strong>Merrimack College（2016-2017）</strong><br />
-          工商管理进修课程，重点涵盖项目管理、企业战略和跨文化领导力。参与本地初创公司咨询项目，积累实际运营与管理经验。
-        </div>
-        <div class="education">
+          2016年，我赴美国参加Merrimack College的工商管理进修课程，学习了项目管理、企业战略及跨文化领导力等方面的知识。在该课程中，我深入了解了企业运作和管理的各个层面，并参与了多个商业案例的研究，特别是在初创公司咨询项目中，我积累了不少关于运营管理和战略规划的经验。这些经验不仅让我在技术领域有所突破，也拓宽了我的职业视野，让我具备了更广泛的管理思维。
+
           <strong>南京外国语学校（2004-2007）</strong><br />
-          强化英语能力及国际交流，担任模拟联合国代表，培养出色的语言表达和跨文化沟通技巧。
+          我在南京外国语学校度过了高中时期，期间我加强了英语的学习，并担任了模拟联合国的代表，积累了大量的公共演讲与跨文化交流经验。这些经历培养了我的语言表达能力和沟通技巧，也让我深刻理解到跨文化交流对现代职业生涯的重要性。
         </div>
       </div>
       <div class="section">
         <div class="title">工作经历</div>
         <div class="experience">
           <strong>Fortinet Inc.（2018 - 至今）</strong><br />
-          担任高级安全架构师，负责亚太区大型企业安全架构设计与实施，涵盖网络边界防护、身份与访问管理（IAM）、威胁建模及云安全策略。领导跨国团队，推动零信任架构和安全自动化平台建设，显著提升客户安全运营效率和响应速度。协调安全预算，管理团队培训和绩效考核，推动员工职业发展。
-          <ul>
-            <li>主导零信任架构设计及实施，成功将访问控制误报率降低至1%以下。</li>
-            <li>牵头FortiSOAR安全自动化响应平台建设，响应时间平均缩短56%。</li>
-            <li>定期组织客户安全培训及攻防演练，提升客户应急能力和安全意识。</li>
-            <li>撰写并发布多份安全白皮书，提升公司行业影响力。</li>
-            <li>参与国际安全会议，分享技术经验，推动合作交流。</li>
-          </ul>
+          自2018年加入Fortinet以来，我担任高级安全架构师，负责为亚太地区的大型企业设计和实施复杂的安全架构。我在这期间主导了多个项目，涵盖了网络边界防护、身份与访问管理（IAM）、威胁建模以及云安全策略等方面的内容。通过领导跨国团队，我成功推动了零信任架构的设计与实施，显著降低了访问控制误报率，并提高了安全运营的效率。
+
+          我主导的FortiSOAR安全自动化响应平台项目，帮助客户的响应时间平均缩短了56%，显著提升了安全事件的处理速度。我还定期组织客户安全培训及攻防演练，通过实战演练提升客户的应急响应能力，并通过发布多篇行业安全白皮书，扩大了Fortinet在行业中的影响力。
+
+          此外，我参与了多个跨国企业的安全预算规划和团队培训，确保项目按时交付，并帮助客户在复杂的安全环境中实现合规要求。在担任领导角色的过程中，我不断推动团队成员的职业成长和技术提升，并且致力于打造一个高效、协作的工作氛围。我的工作不仅限于技术实施，还包括战略规划、风险评估与管理，确保客户在快速发展的数字化环境中能够持续稳定地运营。
+        </div>
+      </div>
+      <div class="section">
+        <div class="title">成功案例</div>
+        <div class="case">
+          <strong>跨国金融集团零信任安全改造</strong><br />
+          作为零信任架构设计与实施的主导者，我带领团队为一家跨国金融集团设计并部署了零信任安全架构。该集团拥有多个数据中心，并在全球范围内运营。项目涉及集成多因素认证（MFA）、单点登录（SSO）、微分段以及行为分析等技术。通过结合持续监控和风险评分模型，项目成功降低了内外部威胁，并且在上线六个月后，客户的入侵尝试下降了70%，所有合规审核都顺利通过。
+
+          在此项目中，我们的团队不仅解决了跨地域部署的技术难题，还根据客户需求定制了专门的安全培训和攻防演练方案，帮助客户在实际运作中提高了安全防护能力。同时，项目还涉及到大量的跨文化沟通与协调，我们与全球各地的团队紧密合作，确保了项目的顺利实施。
+
+          <strong>企业防火墙高可用集群部署</strong><br />
+          为多家企业设计并实施了FortiGate高可用防火墙集群，确保系统的稳定性和业务不中断。通过设计自动故障切换机制和集中管理平台，客户的网络安全防护得到了大幅提升。在项目过程中，我们与客户的IT部门紧密合作，定期进行安全演练和系统升级，确保在发生突发事件时能迅速恢复业务。
+
+          <strong>自动化漏洞扫描与修复平台开发</strong><br />
+          我主导开发了基于Python、Bash和Ansible的自动化漏洞扫描与修复平台，覆盖了300多个服务器节点。通过该平台，客户能够实时扫描网络中的漏洞并及时修复，漏洞响应时间由原先的48小时缩短至6小时。这一系统大大提高了客户的安全响应能力，并且显著降低了人为操作的风险，提升了整体的安全防护水平。
+
+          <strong>信息安全顾问服务</strong><br />
+          除了工作中的项目，我还为多家初创企业提供信息安全咨询服务，帮助它们通过ISO 27001、SOC 2等安全审计。在此过程中，我帮助客户制定了切实可行的安全策略，建立了安全操作中心（SOC），并进行了安全事件的检测与响应演练，增强了客户对安全风险的认知和防范意识。
         </div>
       </div>
     </div>
@@ -260,36 +294,55 @@
       <div class="section">
         <div class="title">Introduction</div>
         <div class="intro">
-          Passionate about cybersecurity and automation with over 10 years of industry experience, leading large-scale multinational projects. Expertise in strategic planning, risk assessment, and team management, focused on enhancing digital security resilience and business continuity. Active in driving innovative technology applications, with a deep understanding of cloud security and zero-trust architecture.
+          I am passionate about cybersecurity and automation, with over 10 years of experience in the information security industry. Throughout my career, I have led and participated in numerous security projects for multinational companies and large enterprises, helping them build robust digital defenses. I am well-versed in a variety of security technologies and tools, including network security defense, vulnerability management, threat modeling, and zero-trust architecture, and I excel at applying these technologies in real-world projects to enhance organizational security resilience and business continuity.
+
+          I have a deep interest in security automation and response, dedicated to driving the intelligence and automation of security defenses. By building automation platforms and security response mechanisms, I have helped enterprises significantly improve their incident response speed and processing efficiency. I place great emphasis not only on technology implementation but also on team building and cross-cultural communication. I have led multinational teams to collaborate effectively and resolve complex security challenges.
+
+          As a continuous learner, I stay updated with the latest developments in the information security field and actively promote the application of innovative technologies. My goal is to enhance corporate security defenses through technology and ensure that businesses operate in a secure environment. Moving forward, I aspire to leverage my knowledge and experience in cybersecurity to safeguard the digital security of enterprises worldwide.
         </div>
       </div>
       <div class="section">
         <div class="title">Education</div>
         <div class="education">
           <strong>Nanjing University of Science and Technology (2007-2011)</strong><br />
-          Major in Information Technology and Computer Engineering, with a graduation project on "Intrusion Detection System Design and Implementation Based on Python". Awarded multiple scholarships and programming competition prizes, actively participated in network security research projects.
-        </div>
-        <div class="education">
+          I pursued a major in Information Technology and Computer Engineering at Nanjing University of Science and Technology. During my four years at university, I systematically learned various aspects of computer science, including programming languages, data structures, and operating systems. My graduation project was titled "Intrusion Detection System Design and Implementation Based on Python," which deepened my understanding of the fundamental principles of network security and how to use Python for security development. In addition, I participated in multiple programming competitions and received several university-level scholarships.
+
+          During my time at university, I not only focused on theoretical learning but also actively engaged in extracurricular activities. By participating in research projects related to network security, I gained valuable hands-on experience. These experiences not only helped me enhance my technical abilities but also provided me with a deeper understanding of the information security industry, laying a solid foundation for my professional career.
+
           <strong>Merrimack College (2016-2017)</strong><br />
-          Business Administration Continuing Education, focusing on project management, corporate strategy, and cross-cultural leadership. Participated in local startup consulting projects, gaining practical operational and management experience.
-        </div>
-        <div class="education">
+          In 2016, I enrolled in the Continuing Education program at Merrimack College, focusing on business administration, project management, corporate strategy, and cross-cultural leadership. Through this program, I gained a comprehensive understanding of business operations and management, and participated in various business case studies. Particularly, during startup consulting projects, I acquired valuable experience in operational management and strategic planning. These experiences not only helped me make breakthroughs in technology but also broadened my professional perspective, equipping me with a wider managerial mindset.
+
           <strong>Nanjing Foreign Language School (2004-2007)</strong><br />
-          Strengthened English skills and international communication, served as a Model UN representative, honing excellent language and cross-cultural communication skills.
+          During my high school years at Nanjing Foreign Language School, I strengthened my English skills and served as a representative in the Model United Nations, gaining substantial experience in public speaking and cross-cultural communication. These experiences helped me develop my language and communication skills, and deepened my understanding of the importance of cross-cultural communication in modern careers.
         </div>
       </div>
       <div class="section">
         <div class="title">Work Experience</div>
         <div class="experience">
           <strong>Fortinet Inc. (2018 - Present)</strong><br />
-          Senior Security Architect responsible for designing and implementing security architectures for large enterprises in the Asia-Pacific region, covering network perimeter defense, identity and access management (IAM), threat modeling, and cloud security strategies. Leading multinational teams and promoting zero-trust architecture and security automation platforms.
-          <ul>
-            <li>Led zero-trust architecture design and implementation, reducing false positive rates for access control to below 1%.</li>
-            <li>Led the development of the FortiSOAR security automation response platform, shortening response times by 56%.</li>
-            <li>Organized regular security training and offensive-defense exercises for customers to enhance their emergency response capabilities.</li>
-            <li>Authored and published multiple security white papers, increasing the company's industry influence.</li>
-            <li>Participated in international security conferences, sharing technical experience and promoting collaboration.</li>
-          </ul>
+          Since joining Fortinet in 2018, I have worked as a Senior Security Architect, responsible for designing and implementing complex security architectures for large enterprises in the Asia-Pacific region. During my time here, I have led multiple projects involving network perimeter defense, identity and access management (IAM), threat modeling, and cloud security strategies. By leading multinational teams, I have successfully promoted the design and implementation of zero-trust architectures, significantly reducing false positive rates for access control and improving security operations efficiency.
+
+          I led the development of the FortiSOAR security automation response platform, which helped reduce incident response times by 56%, significantly improving the speed of security incident handling. I also regularly organize security training and offensive-defense exercises for customers, improving their emergency response capabilities, and have published several industry security white papers, expanding Fortinet's influence in the industry.
+
+          Additionally, I have participated in security budget planning and team training for multiple multinational enterprises, ensuring timely project delivery and assisting clients in achieving compliance in complex security environments. As a leader, I continuously drive the professional growth and technical improvement of team members while fostering an efficient and collaborative work atmosphere. My work spans not only technology implementation but also strategic planning, risk assessment, and management, ensuring that clients can operate sustainably in an ever-evolving digital landscape.
+        </div>
+      </div>
+      <div class="section">
+        <div class="title">Successful Cases</div>
+        <div class="case">
+          <strong>Zero Trust Security Transformation for a Multinational Financial Group</strong><br />
+          As the lead for the design and implementation of zero-trust architectures, I led my team in designing and deploying a zero-trust security framework for a multinational financial group with multiple data centers worldwide. The project involved integrating multi-factor authentication (MFA), single sign-on (SSO), micro-segmentation, and behavioral analytics. By combining continuous monitoring and risk scoring models, we successfully reduced internal and external threats, and within six months, intrusion attempts were reduced by 70% and all compliance audits were successfully passed.
+
+          During this project, our team overcame the technical challenges of cross-regional deployment, and customized security training and offensive-defense exercises based on the client's needs. We also improved the client's operational security capabilities. Furthermore, the project involved a significant amount of cross-cultural communication and coordination, as we worked closely with teams worldwide to ensure the smooth implementation of the project.
+
+          <strong>High Availability Firewall Cluster Deployment for Enterprises</strong><br />
+          I designed and implemented high-availability FortiGate firewall clusters for multiple enterprises, ensuring system stability and minimizing business disruption. By designing an automatic failover mechanism and centralized management platform, we significantly enhanced the client's network security defenses. Throughout the project, we closely collaborated with the client's IT department to conduct regular security drills and system upgrades, ensuring the swift restoration of business operations in case of unexpected incidents.
+
+          <strong>Automated Vulnerability Scanning and Patching Platform Development</strong><br />
+          I led the development of an automated vulnerability scanning and patching platform based on Python, Bash, and Ansible, covering over 300 server nodes. This platform allows clients to perform real-time vulnerability scanning and timely remediation, reducing vulnerability response times from 48 hours to 6 hours. This system greatly enhanced the client's security response capability while significantly reducing the risks of human error, improving overall security levels.
+
+          <strong>Information Security Consulting</strong><br />
+          In addition to my work projects, I have provided information security consulting services to multiple startups, helping them pass security audits such as ISO 27001, SOC 2, etc. During this process, I developed actionable security strategies for clients, helped establish Security Operation Centers (SOC), and conducted security incident detection and response exercises, enhancing clients' awareness and mitigation of security risks.
         </div>
       </div>
     </div>
@@ -299,22 +352,22 @@
 
   <script>
     function switchLang(lang) {
-      document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
-      document.querySelector('.lang.' + lang).style.display = 'block';
-
-      document.getElementById('btn-zh').classList.remove('active');
-      document.getElementById('btn-en').classList.remove('active');
-      document.getElementById('btn-' + lang).classList.add('active');
+      const zh = document.querySelector('.lang.zh');
+      const en = document.querySelector('.lang.en');
+      const btnZh = document.getElementById('btn-zh');
+      const btnEn = document.getElementById('btn-en');
+      if (lang === 'zh') {
+        zh.style.display = 'block';
+        en.style.display = 'none';
+        btnZh.classList.add('active');
+        btnEn.classList.remove('active');
+      } else {
+        zh.style.display = 'none';
+        en.style.display = 'block';
+        btnEn.classList.add('active');
+        btnZh.classList.remove('active');
+      }
     }
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.section').forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
